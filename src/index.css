@@ -5,7 +5,16 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 8%;
+
+    --green-dark: #1a5c2e;
+    --green-mid: #2d8a4e;
+    --green-light: #4db870;
+    --lime: #a8e063;
+    --black: #0d0d0d;
+    --white: #ffffff;
+    --gray-light: #f4f4f4;
+    --gray-mid: #e0e0e0;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
