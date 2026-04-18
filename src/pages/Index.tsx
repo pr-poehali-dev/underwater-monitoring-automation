@@ -9,6 +9,9 @@ const slides = [
   { id: 5, type: "usage" },
   { id: 6, type: "economics" },
   { id: 7, type: "conclusion" },
+  { id: 9, type: "hydro" },
+  { id: 10, type: "ecoeffect" },
+  { id: 11, type: "roi" },
 ];
 
 function SlideTitle() {
@@ -254,6 +257,151 @@ function SlideConclusion() {
   );
 }
 
+function SlideHydro() {
+  const points = [
+    { icon: "Waves", label: "Надводные дроны (USV)", desc: "Круглосуточное патрулирование заданных маршрутов" },
+    { icon: "Droplets", label: "Контроль качества воды", desc: "Датчики pH, кислорода, нефтепродуктов в реальном времени" },
+    { icon: "AlertTriangle", label: "Обнаружение загрязнений", desc: "Выявление разливов и пятен на ранней стадии" },
+    { icon: "Search", label: "Поиск сбросов", desc: "Обнаружение несанкционированных источников загрязнений" },
+  ];
+  return (
+    <div className="slide-content hydro-slide">
+      <div className="hydro-bg" />
+      <div className="hydro-grid-bg" />
+      <div className="slide-header slide-header-light">
+        <div className="slide-num slide-num-light">09</div>
+        <h2 className="slide-title slide-title-light">
+          Автономный мониторинг<br /><span>прибрежных зон</span>
+        </h2>
+      </div>
+      <div className="hydro-content">
+        <div className="hydro-cards">
+          {points.map((p, i) => (
+            <div key={i} className="hydro-card" style={{ animationDelay: `${i * 0.09}s` }}>
+              <div className="hydro-card-icon"><Icon name={p.icon} size={24} /></div>
+              <div>
+                <div className="hydro-card-title">{p.label}</div>
+                <div className="hydro-card-desc">{p.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hydro-visual">
+          <div className="hydro-water" />
+          <div className="usv-drone">
+            <div className="usv-body" />
+            <div className="usv-mast" />
+            <div className="usv-wave usv-w1" />
+            <div className="usv-wave usv-w2" />
+          </div>
+          <div className="hydro-route">
+            <div className="route-dot rd1" /><div className="route-dot rd2" /><div className="route-dot rd3" />
+            <div className="route-line rl1" /><div className="route-line rl2" />
+          </div>
+          <div className="pollute-spot" />
+          <div className="scan-ring" />
+          <div className="hydro-tag">USV · 24/7</div>
+          <div className="hydro-quote">
+            «Если подводные дроны — инструмент диагностики,<br />то надводные — инструмент постоянного контроля»
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SlideEcoEffect() {
+  const items = [
+    { icon: "ShieldAlert", label: "Предотвращение ущерба", value: "до 50%", desc: "снижение экологических потерь при раннем обнаружении" },
+    { icon: "FileX", label: "Снижение штрафов", value: "0–100 млн ₽", desc: "избегаемый ущерб от одного нарушения" },
+    { icon: "Gauge", label: "Оптимизация водопользования", value: "−15–20%", desc: "снижение потерь воды при контроле" },
+    { icon: "BarChart3", label: "ESG / отчётность", value: "+ценность", desc: "данные для прогнозирования и аудита" },
+  ];
+  return (
+    <div className="slide-content ecoeffect-slide">
+      <div className="eco2-bg" />
+      <div className="slide-header">
+        <div className="slide-num">10</div>
+        <h2 className="slide-title">Экологический и<br /><span>экономический эффект</span></h2>
+      </div>
+      <div className="ecoeffect-grid">
+        {items.map((item, i) => (
+          <div key={i} className="ecoeffect-card" style={{ animationDelay: `${i * 0.09}s` }}>
+            <div className="ecoeffect-top">
+              <div className="ecoeffect-icon"><Icon name={item.icon} size={26} /></div>
+              <div className="ecoeffect-value">{item.value}</div>
+            </div>
+            <div className="ecoeffect-label">{item.label}</div>
+            <div className="ecoeffect-desc">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div className="ecoeffect-alert">
+        <Icon name="Info" size={16} />
+        <span>1 разлив нефти (1 км²) — ущерб <strong>10–100 млн ₽</strong>. Ранняя диагностика снижает его на 30–50%.</span>
+      </div>
+    </div>
+  );
+}
+
+function SlideROI() {
+  const compare = [
+    { param: "Стоимость/месяц", old: "2,5–5 млн ₽", nw: "~100–200 тыс ₽", better: true },
+    { param: "Персонал", old: "2–3 человека", nw: "1 оператор", better: true },
+    { param: "Режим работы", old: "8–10 ч / день", nw: "24/7", better: true },
+    { param: "Риски", old: "Высокие", nw: "Минимальные", better: true },
+  ];
+  return (
+    <div className="slide-content roi-slide">
+      <div className="roi-bg" />
+      <div className="slide-header slide-header-light">
+        <div className="slide-num slide-num-light">11</div>
+        <h2 className="slide-title slide-title-light">Экономическая<br /><span>целесообразность</span></h2>
+      </div>
+      <div className="roi-body">
+        <div className="roi-left">
+          <div className="roi-table">
+            <div className="roi-table-head">
+              <div className="roi-th">Параметр</div>
+              <div className="roi-th roi-th-old">Катер + экипаж</div>
+              <div className="roi-th roi-th-new">USV-дрон</div>
+            </div>
+            {compare.map((row, i) => (
+              <div key={i} className="roi-row" style={{ animationDelay: `${i * 0.07}s` }}>
+                <div className="roi-td roi-td-param">{row.param}</div>
+                <div className="roi-td roi-td-old">{row.old}</div>
+                <div className="roi-td roi-td-new">{row.nw}</div>
+              </div>
+            ))}
+          </div>
+          <div className="roi-invest">
+            <div className="roi-invest-title">Инвестиции в USV-систему</div>
+            <div className="roi-invest-row"><span>Дрон + датчики + ПО</span><span className="roi-bold">3–8 млн ₽</span></div>
+            <div className="roi-invest-row"><span>Эксплуатация / мес</span><span className="roi-bold">~100 тыс ₽</span></div>
+          </div>
+        </div>
+        <div className="roi-right">
+          <div className="roi-stat roi-stat-1">
+            <div className="roi-stat-val">↓50%</div>
+            <div className="roi-stat-lbl">снижение затрат</div>
+          </div>
+          <div className="roi-stat roi-stat-2">
+            <div className="roi-stat-val">6–18 мес</div>
+            <div className="roi-stat-lbl">окупаемость</div>
+          </div>
+          <div className="roi-stat roi-stat-3">
+            <div className="roi-stat-val">↓40%</div>
+            <div className="roi-stat-lbl">снижение ущерба</div>
+          </div>
+          <div className="roi-final">
+            Экономия 2–4 млн ₽/мес<br />при инвестиции 5 млн ₽
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const slideComponents: Record<string, React.FC> = {
   title: SlideTitle,
   problems: SlideProblems,
@@ -262,6 +410,9 @@ const slideComponents: Record<string, React.FC> = {
   usage: SlideUsage,
   economics: SlideEconomics,
   conclusion: SlideConclusion,
+  hydro: SlideHydro,
+  ecoeffect: SlideEcoEffect,
+  roi: SlideROI,
 };
 
 export default function Index() {
@@ -808,6 +959,292 @@ export default function Index() {
           font-family: 'Montserrat', sans-serif;
           font-size: 14px; font-weight: 600;
           line-height: 1.4; text-align: center;
+        }
+
+        /* SLIDE 9 — HYDRO */
+        .hydro-slide { background: #071a10; }
+        .hydro-bg {
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse at 80% 60%, rgba(77,184,112,0.13) 0%, transparent 60%),
+            radial-gradient(ellipse at 20% 90%, rgba(0,80,160,0.10) 0%, transparent 50%);
+        }
+        .hydro-grid-bg {
+          position: absolute; inset: 0;
+          background-image:
+            linear-gradient(rgba(77,184,112,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(77,184,112,0.04) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+        .hydro-content {
+          position: relative; z-index: 2;
+          display: flex; gap: 32px;
+          padding: 16px 60px 40px;
+          flex: 1;
+        }
+        .hydro-cards {
+          flex: 1; display: flex; flex-direction: column; gap: 10px;
+          justify-content: center;
+        }
+        .hydro-card {
+          display: flex; align-items: center; gap: 14px;
+          background: rgba(255,255,255,0.035);
+          border: 1px solid rgba(77,184,112,0.18);
+          border-left: 3px solid #4db870;
+          border-radius: 10px; padding: 13px 18px;
+          animation: fadeUp 0.4s ease both;
+          transition: background 0.2s;
+        }
+        .hydro-card:hover { background: rgba(77,184,112,0.08); }
+        .hydro-card-icon {
+          width: 44px; height: 44px; flex-shrink: 0;
+          background: rgba(77,184,112,0.14);
+          border-radius: 10px;
+          display: flex; align-items: center; justify-content: center;
+          color: #a8e063;
+        }
+        .hydro-card-title {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px; font-weight: 700;
+          color: #fff; margin-bottom: 2px;
+        }
+        .hydro-card-desc { font-size: 12px; color: rgba(255,255,255,0.5); }
+        .hydro-visual {
+          width: 340px; flex-shrink: 0;
+          position: relative;
+          border: 1px solid rgba(77,184,112,0.15);
+          border-radius: 16px;
+          background: rgba(0,30,15,0.6);
+          overflow: hidden;
+        }
+        .hydro-water {
+          position: absolute; bottom: 0; left: 0; right: 0;
+          height: 55%;
+          background: linear-gradient(180deg, rgba(0,80,160,0.12) 0%, rgba(0,50,120,0.25) 100%);
+        }
+        .usv-drone {
+          position: absolute; left: 50%; top: 38%;
+          transform: translate(-50%, -50%);
+        }
+        .usv-body {
+          width: 70px; height: 22px;
+          background: linear-gradient(90deg, #2d8a4e, #4db870);
+          border-radius: 4px 14px 14px 4px;
+        }
+        .usv-mast {
+          position: absolute; left: 50%; top: -20px;
+          transform: translateX(-50%);
+          width: 3px; height: 22px;
+          background: #a8e063;
+        }
+        .usv-wave {
+          position: absolute; left: 50%; bottom: -6px;
+          transform: translateX(-50%);
+          height: 6px; border-radius: 0 0 50% 50%;
+          background: rgba(77,184,112,0.35);
+          animation: waveMove 2s ease-in-out infinite;
+        }
+        .usv-w1 { width: 90px; animation-delay: 0s; }
+        .usv-w2 { width: 120px; animation-delay: 0.4s; opacity: 0.5; }
+        @keyframes waveMove {
+          0%,100% { transform: translateX(-50%) scaleX(1); }
+          50% { transform: translateX(-50%) scaleX(1.15); }
+        }
+        .hydro-route { position: absolute; inset: 0; }
+        .route-dot {
+          position: absolute; width: 8px; height: 8px;
+          background: #a8e063; border-radius: 50%;
+        }
+        .rd1 { left: 20%; top: 25%; }
+        .rd2 { left: 50%; top: 40%; }
+        .rd3 { left: 75%; top: 30%; }
+        .route-line {
+          position: absolute; height: 1px;
+          background: rgba(168,224,99,0.4);
+          transform-origin: left center;
+        }
+        .rl1 { width: 95px; left: 21%; top: 29%; transform: rotate(10deg); }
+        .rl2 { width: 80px; left: 52%; top: 35%; transform: rotate(-10deg); }
+        .pollute-spot {
+          position: absolute; right: 15%; bottom: 28%;
+          width: 42px; height: 28px;
+          background: radial-gradient(circle, rgba(200,120,0,0.55) 0%, transparent 70%);
+          border-radius: 50%;
+          animation: pulsePollute 2.5s ease-in-out infinite;
+        }
+        @keyframes pulsePollute {
+          0%,100% { opacity: 0.8; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.3); }
+        }
+        .scan-ring {
+          position: absolute; right: 13%; bottom: 22%;
+          width: 60px; height: 60px;
+          border: 2px solid rgba(168,224,99,0.5);
+          border-radius: 50%;
+          animation: scanRing 2.5s ease-out infinite;
+        }
+        @keyframes scanRing {
+          0% { transform: scale(0.6); opacity: 0.8; }
+          100% { transform: scale(1.4); opacity: 0; }
+        }
+        .hydro-tag {
+          position: absolute; top: 12px; right: 12px;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px; font-weight: 700;
+          background: rgba(77,184,112,0.2);
+          border: 1px solid rgba(77,184,112,0.35);
+          color: #a8e063;
+          padding: 3px 10px; border-radius: 20px;
+          letter-spacing: 1px;
+        }
+        .hydro-quote {
+          position: absolute; bottom: 0; left: 0; right: 0;
+          padding: 10px 14px;
+          font-size: 11px; font-style: italic;
+          color: rgba(255,255,255,0.4);
+          border-top: 1px solid rgba(77,184,112,0.1);
+          line-height: 1.4;
+        }
+
+        /* SLIDE 10 — ECOEFFECT */
+        .ecoeffect-slide { background: #f5faf2; }
+        .eco2-bg {
+          position: absolute; inset: 0;
+          background: linear-gradient(145deg, #f0f9e8 0%, #e0f4d0 100%);
+        }
+        .ecoeffect-grid {
+          position: relative; z-index: 2;
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          gap: 14px; padding: 20px 60px; flex: 1;
+        }
+        .ecoeffect-card {
+          background: #fff;
+          border: 1px solid #d0e8c0;
+          border-radius: 14px; padding: 20px 16px;
+          display: flex; flex-direction: column; gap: 8px;
+          animation: fadeUp 0.4s ease both;
+          transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .ecoeffect-card:hover { box-shadow: 0 8px 24px rgba(45,138,78,0.12); transform: translateY(-3px); }
+        .ecoeffect-top {
+          display: flex; align-items: center;
+          justify-content: space-between; margin-bottom: 4px;
+        }
+        .ecoeffect-icon {
+          width: 44px; height: 44px;
+          background: linear-gradient(135deg, #d8f0c4, #b5e098);
+          border-radius: 11px;
+          display: flex; align-items: center; justify-content: center;
+          color: #1a5c2e;
+        }
+        .ecoeffect-value {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 18px; font-weight: 800;
+          color: #1a5c2e; text-align: right;
+        }
+        .ecoeffect-label {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px; font-weight: 700; color: #0d0d0d;
+        }
+        .ecoeffect-desc { font-size: 12px; color: #666; line-height: 1.4; }
+        .ecoeffect-alert {
+          position: relative; z-index: 2;
+          display: flex; align-items: center; gap: 10px;
+          margin: 0 60px 40px;
+          padding: 13px 18px;
+          background: rgba(255,180,0,0.08);
+          border: 1px solid rgba(255,180,0,0.3);
+          border-radius: 10px;
+          font-size: 13px; color: #5a4000;
+        }
+        .ecoeffect-alert strong { color: #b85c00; }
+
+        /* SLIDE 11 — ROI */
+        .roi-slide { background: #071510; }
+        .roi-bg {
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse at 60% 80%, rgba(77,184,112,0.10) 0%, transparent 55%);
+        }
+        .roi-body {
+          position: relative; z-index: 2;
+          display: flex; gap: 24px;
+          padding: 16px 60px 44px;
+          flex: 1;
+        }
+        .roi-left { flex: 1.4; display: flex; flex-direction: column; gap: 14px; }
+        .roi-right {
+          flex: 1; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; gap: 12px;
+        }
+        .roi-table { border: 1px solid rgba(77,184,112,0.18); border-radius: 12px; overflow: hidden; }
+        .roi-table-head {
+          display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+          background: rgba(77,184,112,0.12);
+        }
+        .roi-th {
+          padding: 9px 12px;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px; font-weight: 700;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+        .roi-th-old { color: rgba(255,100,100,0.7); }
+        .roi-th-new { color: #a8e063; }
+        .roi-row {
+          display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+          border-top: 1px solid rgba(77,184,112,0.10);
+          animation: fadeUp 0.35s ease both;
+        }
+        .roi-row:hover { background: rgba(77,184,112,0.05); }
+        .roi-td {
+          padding: 9px 12px;
+          font-size: 13px;
+        }
+        .roi-td-param { color: rgba(255,255,255,0.7); font-weight: 500; }
+        .roi-td-old { color: rgba(255,140,140,0.8); }
+        .roi-td-new { color: #a8e063; font-weight: 600; }
+        .roi-invest {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(77,184,112,0.15);
+          border-radius: 10px; padding: 14px 16px;
+          display: flex; flex-direction: column; gap: 7px;
+        }
+        .roi-invest-title {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px; font-weight: 700;
+          color: rgba(255,255,255,0.4);
+          letter-spacing: 1px; text-transform: uppercase;
+          margin-bottom: 4px;
+        }
+        .roi-invest-row {
+          display: flex; justify-content: space-between;
+          font-size: 13px; color: rgba(255,255,255,0.6);
+        }
+        .roi-bold { color: #a8e063; font-weight: 700; }
+        .roi-stat {
+          width: 100%; border-radius: 14px; padding: 18px;
+          text-align: center;
+          animation: fadeUp 0.4s ease both;
+        }
+        .roi-stat-1 { background: rgba(168,224,99,0.12); border: 1px solid rgba(168,224,99,0.25); animation-delay: 0s; }
+        .roi-stat-2 { background: rgba(77,184,112,0.12); border: 1px solid rgba(77,184,112,0.3); animation-delay: 0.1s; }
+        .roi-stat-3 { background: rgba(45,138,78,0.12); border: 1px solid rgba(45,138,78,0.3); animation-delay: 0.2s; }
+        .roi-stat-val {
+          font-family: 'Montserrat', sans-serif;
+          font-size: clamp(26px, 3.5vw, 40px);
+          font-weight: 900; color: #a8e063; line-height: 1;
+          margin-bottom: 4px;
+        }
+        .roi-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); }
+        .roi-final {
+          width: 100%;
+          background: linear-gradient(90deg, #1a5c2e, #2d8a4e);
+          color: #fff; border-radius: 12px;
+          padding: 13px 16px; text-align: center;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 13px; font-weight: 700;
+          line-height: 1.5;
+          animation: fadeUp 0.4s 0.3s ease both;
         }
       `}</style>
     </div>
